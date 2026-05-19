@@ -1,0 +1,37 @@
+#pragma once
+
+#include <stdio.h>
+#include <iostream>
+#include <fstream>
+#include <sstream>
+#include <string>
+#include <vector>
+#include <queue>
+#include <deque>
+#include <ctime>
+#include <memory>
+#include <cstring>
+#include <array>
+#include <cstdlib>
+#include <random>
+#include <functional>
+#include <cmath>
+#include <cfloat>
+#include <algorithm>
+#include <unordered_set>
+#include <iomanip>
+#include <set>
+#include <climits>
+#include <limits>
+#include <filesystem>
+#include <numeric>
+#include <cctype>
+#include <unordered_map>
+
+#include "timer.h"
+#include "serialize.h"
+#include "graph.hpp"
+#include "grid.hpp"
+#include "io.hpp"
+#include "alg.h"
+#include "graphbin.hpp"
