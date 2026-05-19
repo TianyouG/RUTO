@@ -36,7 +36,7 @@ See the full flag list:
 ## Core Options
 
 - Method selection:
-  - `--method <name>`: `sandwich` (default), `random_k`, `regular_spacing_grid`, `greedy_original_full`, `exact_true`, `exact_sampled`, `simanneal`, ...
+  - `--method <name>`: `sandwich` (default), `random_k`, `regular_spacing_grid`, `greedy_original_full`, ...
   - `--margs "k=...,corridor_r=...,..."`: method-specific overrides
   - `--list-methods`: print available methods
 - Budget / objective:
@@ -70,40 +70,6 @@ By default results are written under `<out_dir>/<tag>/`:
 - `report.tsv`: run metadata + pick/UB/LB statistics
 - `stdout.txt`: mirrored console log
 - `weights.bin`: optional cached neighbourhood weights
-
-## New Baselines (tiny graphs)
-
-These three baselines are intended for very small graphs.
-
-```bash
-# prepare a tiny graph
-./treeopt --make_grid rows=3,cols=3 --emit_edges tiny3.txt --paths_mode legacy
-```
-
-```bash
-# Exact-True: exhaustive k-combinations on full OD objective
-./treeopt --edges tiny3.txt --method exact_true --hard_cutoff 1 --psi clip:1.0 --k 2 \
-  --margs "nmax=20" --out_dir out --tag exact_true_tiny --paths_mode legacy --seed 1
-```
-
-```bash
-# Exact-Sampled: exhaustive k-combinations on sampled empirical objective
-./treeopt --edges tiny3.txt --method exact_sampled --hard_cutoff 1 --psi clip:1.0 --k 2 \
-  --M_agents 40 --K_paths_per_agent 4 --M_eval 0 --margs "nmax=20" \
-  --out_dir out --tag exact_sampled_tiny --paths_mode legacy --seed 1
-```
-
-```bash
-# SimAnneal: simulated annealing on the same sampled empirical objective
-./treeopt --edges tiny3.txt --method simanneal --hard_cutoff 1 --psi clip:1.0 --k 2 \
-  --M_agents 40 --K_paths_per_agent 4 --M_eval 0 \
-  --margs "simann_steps=500,simann_inner=16,simann_restarts=3,simann_init=greedy,simann_seed=123" \
-  --out_dir out --tag simanneal_tiny --paths_mode legacy --seed 1
-```
-
-Common `simanneal` margs:
-- `simann_steps`, `simann_t0`, `simann_tmin`, `simann_alpha`
-- `simann_inner`, `simann_restarts`, `simann_init=random|greedy`, `simann_seed`
 
 ## Experiment Examples
 
